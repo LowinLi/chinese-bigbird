@@ -75,7 +75,7 @@ def train():
         save_steps=10_000,
         save_total_limit=500,
         prediction_loss_only=True,
-        gradient_accumulation_steps=4, #重计算，累计多个batch，更新一次参数
+        gradient_accumulation_steps=4, #累计多个batch，更新一次参数
         max_grad_norm=1
         # group_by_length=True, #相似长度sample放在一起
     )

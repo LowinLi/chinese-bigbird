@@ -2,7 +2,7 @@
 
 ## 简介
 + [BigBird](https://github.com/google-research/bigbird)是由google与2020年[发表](https://arxiv.org/abs/2007.14062)的模型结构，利用稀疏注意力机制，把二次依赖关系降为线性依赖，因此更适合做长文本任务。
-+ 本项目利用[transformers](https://github.com/huggingface/transformers)库，[CLUE开源语料](https://github.com/brightmart/nlp_chinese_corpus)，预训练中文版本`BigBird`模型，并借助[huggingface社区](https://huggingface.co/models)分享，如果对您有用，欢迎`star`项目。
++ 本项目利用[transformers](https://github.com/huggingface/transformers)库，[CLUE开源语料](https://github.com/brightmart/nlp_chinese_corpus)，预训练中文版本`BigBird`模型，并借助[huggingface社区](https://huggingface.co/Lowin)分享，如果对您有用，欢迎`star`项目。
 
 ## 预训练步骤
 1. 提取文本长度在512-1024的文本

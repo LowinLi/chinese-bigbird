@@ -35,9 +35,10 @@ model = BigBirdModel.from_pretrained('Lowin/chinese-bigbird-tiny')
 tokenizer = JiebaTokenizer.from_pretrained('Lowin/chinese-bigbird-tiny')
 ```
 ## 模型训练参数
-|模型|参数量|block|vocab_size|layers|hidden_size|heads|显存|batch_size|accu_epoch|step_per_batch|
+|模型|参数量|block|vocab_size|layers|hidden_size|heads|显存|batch_size|gradient_accumulation_steps|total_step|
 |-|-|-|-|-|-|-|-|-|-|-|
-|chinese-bigbird-tiny|10.8M|1024|20_000|4|220|11|8000*2|16|4|128|
+|chinese-bigbird-tiny|10.8M|1024|20_000|4|220|11|8000*2|16|4|150K
+|chinese-bigbird-small|41.36M|1024|30_000|6|512|8|12000|18|6|150K
 
 ## 参考
 

@@ -46,6 +46,8 @@ model = BigBirdModel.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 ```
 
+模型详见[Huggingface Model Hub](https://huggingface.co/Lowin)
+
 ## 模型训练参数
 | 模型                          | 粒度              | 参数量 | max_length | vocab_size | layers | hidden_size | heads | total_step |
 |-------------------------------|-------------------|--------|------------|------------|--------|-------------|-------|------------|
@@ -53,7 +55,42 @@ tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 | chinese-bigbird-mini-1024     | jieba分词与字结合 | 18.9M  | 1024       | 25_000     | 5      | 300         | 10    | 150K       |
 | chinese-bigbird-small-1024    | jieba分词与字结合 | 41.36M | 1024       | 30_000     | 6      | 512         | 8     | 150K       |
 | chinese-bigbird-base-4096     | jieba分词与字结合 | 119.5M | 4096       | 40_000     | 12     | 768         | 12    | 30K        |
-| chinese-bigbird-wwm-base-4096 | 字                | 105M   | 4096       | 21_128     | 12     | 768         | 12    | 2K         |
+| chinese-bigbird-wwm-base-4096 | 字                | 105M   | 4096       | 21_128     | 12     | 768         | 12    | 2K（在chinesee-roberta-wwm-ext权重基础继续WWM预训练）         |
+
+## 下游finetune效果
+### clue分类任务
+#### finetune参数
+| 参数       | 参数值 |
+|------------|--------|
+| 学习率     | 5e-05  |
+| batch_size | 50     |
+| epochs     | 2      |
+
+#### acc
+| 模型                                            | TNEWS(字符长度平均37) | IFLYTEK(字符长度98%分位712) |
+|-------------------------------------------------|-----------------------|-----------------------------|
+| chinese-roberta-wwm-ext(baseline-截断前512字符) | 0.566                 | 0.59                        |
+| chinese-bigbird-tiny-1024                       | 0.551                 | 0.47                        |
+| chinese-bigbird-mini-1024                       | 0.548                 | 0.501                       |
+| chinese-bigbird-small-1024                      | 0.559                 | 0.565                       |
+| chinese-bigbird-base-4096                       | 0.557                 | 0.589                       |
+| chinese-bigbird-wwm-base-4096                   | 0.568                 | 0.573                       |
+
+#### 推断平均用时（ms）
+
++ onnx量化单核cpu推荐平均用时（ms）
++ Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+
+| 模型                                            | TNEWS(字符长度平均37) | IFLYTEK(字符长度98%分位712) |
+|-------------------------------------------------|-----------------------|-----------------------------|
+| chinese-roberta-wwm-ext(baseline-截断前512字符) | 47                    | 577                         |
+| chinese-bigbird-tiny-1024                       | 4                     | 42                          |
+| chinese-bigbird-mini-1024                       | 6                     | 63                          |
+| chinese-bigbird-small-1024                      | 11                    | 118                         |
+| chinese-bigbird-base-4096                       | 34                    | 367                         |
+| chinese-bigbird-wwm-base-4096                   | 47                    | 600                         |
+
+
 ## 参考
 
 https://github.com/huggingface/blog/blob/master/notebooks/01_how_to_train.ipynb

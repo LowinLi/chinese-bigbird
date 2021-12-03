@@ -78,7 +78,7 @@ tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 
 #### 推断平均用时（ms）
 
-+ onnx量化单核cpu推荐平均用时（ms）
++ onnx量化单核cpu推断平均用时（ms）
 + Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
 
 | 模型                                            | TNEWS(字符长度98%分位37) | IFLYTEK(字符长度98%分位712) |

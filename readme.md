@@ -67,7 +67,7 @@ tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 | epochs     | 2      |
 
 #### acc
-| 模型                                            | TNEWS(字符长度平均37) | IFLYTEK(字符长度98%分位712) |
+| 模型                                            | TNEWS(字符长度98%分位37) | IFLYTEK(字符长度98%分位712) |
 |-------------------------------------------------|-----------------------|-----------------------------|
 | chinese-roberta-wwm-ext(baseline-截断前512字符) | 0.566                 | 0.59                        |
 | chinese-bigbird-tiny-1024                       | 0.551                 | 0.47                        |
@@ -81,7 +81,7 @@ tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 + onnx量化单核cpu推荐平均用时（ms）
 + Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
 
-| 模型                                            | TNEWS(字符长度平均37) | IFLYTEK(字符长度98%分位712) |
+| 模型                                            | TNEWS(字符长度98%分位37) | IFLYTEK(字符长度98%分位712) |
 |-------------------------------------------------|-----------------------|-----------------------------|
 | chinese-roberta-wwm-ext(baseline-截断前512字符) | 47                    | 577                         |
 | chinese-bigbird-tiny-1024                       | 4                     | 42                          |

@@ -37,7 +37,7 @@ def main(file="../data/0609/merge_data_plus_shuffle_lm_512.txt"):
     for word in (df["word"][df["length"] == 1].iloc[:5000]).tolist():
         vocabs += word + "\n"
     # 15000-106个词
-    for word in (df["word"][df["length"] > 1].iloc[: 15000 - 106]).tolist(): 
+    for word in (df["word"][df["length"] > 1].iloc[: 15000 - 106]).tolist():
         vocabs += word + "\n"
     with open("../data/0609/vocab.txt", "w") as f:
         f.write(vocabs)

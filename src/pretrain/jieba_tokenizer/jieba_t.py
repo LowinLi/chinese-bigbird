@@ -6,7 +6,9 @@ tokenizer
 import jieba_fast
 from transformers import BertTokenizer
 import os
+
 jieba_fast.enable_parallel()
+
 
 class JiebaTokenizer(BertTokenizer):
     def __init__(

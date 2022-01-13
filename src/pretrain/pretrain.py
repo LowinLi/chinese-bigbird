@@ -20,6 +20,7 @@ import linecache
 
 dir = os.path.dirname(os.path.abspath(__file__))
 
+
 class LazyTextDataset(Dataset):
     def __init__(self, tokenizer, file_path, block_size):
         self._filename = file_path
@@ -31,12 +32,15 @@ class LazyTextDataset(Dataset):
 
     def __getitem__(self, idx):
         line = linecache.getline(self._filename, idx + 1)
-        encoding = self._tokenizer(line, add_special_tokens=True, truncation=True, max_length=self._block_size)["input_ids"]
+        encoding = self._tokenizer(
+            line, add_special_tokens=True, truncation=True, max_length=self._block_size
+        )["input_ids"]
         example = {"input_ids": torch.tensor(encoding, dtype=torch.long)}
         return example
 
     def __len__(self):
         return self._total_data
+
 
 def get_parnum(m):
     total = sum([param.nelement() for param in m.parameters()])
@@ -75,7 +79,7 @@ def train():
         save_steps=10_000,
         save_total_limit=500,
         prediction_loss_only=True,
-        gradient_accumulation_steps=4, #累计多个batch，更新一次参数
+        gradient_accumulation_steps=4,  # 累计多个batch，更新一次参数
         max_grad_norm=1
         # group_by_length=True, #相似长度sample放在一起
     )
@@ -84,7 +88,6 @@ def train():
         args=training_args,
         data_collator=data_collator,
         train_dataset=dataset,
-        
     )
     print("开始训练")
     trainer.train()

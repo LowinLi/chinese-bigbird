@@ -57,6 +57,12 @@ tokenizer = BertTokenizer.from_pretrained('Lowin/chinese-bigbird-wwm-base-4096')
 | chinese-bigbird-base-4096     | jieba分词与字结合 | 119.5M | 4096       | 40_000     | 12     | 768         | 12    | 30K        |
 | chinese-bigbird-wwm-base-4096 | 字                | 105M   | 4096       | 21_128     | 12     | 768         | 12    | 2K（在chinesee-roberta-wwm-ext权重基础继续WWM预训练）         |
 
+## wwm预训练流程
++ 1. 加载chinesee-roberta-wwm-ext
++ 2. 初始化512-4096部分的position embedding
++ 3. 修改dataset处理
++ 4. 开始预训练
+
 ## 下游finetune效果
 ### clue分类任务
 #### finetune参数
